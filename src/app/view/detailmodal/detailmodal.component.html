@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>详细信息</ion-title>
+    <ion-buttons slot="end">
+      <button ion-button icon-only (click)="dismiss()">
+        <ion-icon ios="ios-close"> </ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <img src="{{item.images[0]}}">
+  <h2>走失日期：{{item.date}}</h2>
+  <p></p>
+
+
+</ion-content>
+

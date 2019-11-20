@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-title>探索</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of items" class="ion-no-margin ion-no-padding">
+        <ion-card>
+          <img src="{{item.images[0]}}" size="50%"/>
+          <ion-card-header>
+            <ion-card-subtitle>Aaron</ion-card-subtitle>
+            <ion-card-title>Help wanted!</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            {{item.detail}}
+          </ion-card-content>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="{{item.images[0]}}">
+            </ion-avatar>
+            <p>洚尘</p>
+            <button ion-button icon-only slot="end">
+                <ion-icon name="thumbs-up"></ion-icon>
+              </button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+</ion-content>
+

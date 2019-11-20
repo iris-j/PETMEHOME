@@ -38,6 +38,42 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'post',
+        children: [
+          {
+            path:'',
+            loadChildren: () =>
+              import('../post/post.module').then(m => m.PostPageModule)
+          },
+          {
+            path:'postlost',
+            loadChildren: () =>
+              import('../post/postlost/postlost.module').then(m => m.PostlostPageModule)
+          }
+        ]
+      },
+      {
+        path: 'view',
+        children: [
+          {
+            path:'',
+            loadChildren: () =>
+              import('../view/view.module').then(m => m.ViewPageModule)
+          },
+
+        ]
+      },
+      {
+        path: 'explore',
+        children: [
+          {
+            path:'',
+            loadChildren: () =>
+              import('../explore/explore.module').then(m => m.ExplorePageModule)
+          }
+        ]
+      },
+      {
         path: '',
         redirectTo: '/tabs/tab1',
         pathMatch: 'full'
