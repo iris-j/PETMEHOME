@@ -1,0 +1,39 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>编辑资料</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button type="submit" (click)="form.valid && postinfo(form.value)" [disabled]="!form.valid">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-row class="ion-text-center">
+    <ion-col size="12" class="text-center">
+    <img *ngIf="!photoService.image" src={{info?.avatar}} alt="" style="border-radius:50%;width:70px;height:70px" (click)="presentActionSheet()"/>
+    <img *ngIf="photoService.image" [src]="photoService.image" alt="" style="border-radius:50%;width:70px;height:70px" (click)="presentActionSheet()"/>
+    </ion-col>
+  </ion-row>    
+  <form #form="ngForm">
+    <div class="ion-padding">
+      <ion-item>
+        <ion-label>昵称</ion-label>
+        <ion-input name="nickname" type="text" ngModel required placeholder="{{info?.nickname}}"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>地址</ion-label>
+        <ion-input name="address" type="text" ngModel placeholder="{{info?.address}}"></ion-input>
+      </ion-item>
+    </div>
+  </form>
+</ion-content>

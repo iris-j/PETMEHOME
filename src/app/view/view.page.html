@@ -1,22 +1,36 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar mode="ios">
     <ion-title>发现</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content color="light" class="no-padding">
   <ion-list>
-    <ion-item *ngFor="let item of items" (click)="viewRecord(item)">
+    <ion-item *ngFor="let item of items" (click)="viewRecord(item)" lines="inset">
       <ion-avatar slot="start">
         <img src="{{item.images[0]}}">
       </ion-avatar>
       <ion-label>
-        <h2>{{item.address}}</h2>
-        <p>{{item.detail}}</p>
+        <h3 style="font-weight:bold;">{{item.title}}</h3>
+        <p style="color:grey;font-size:12px;">{{item.detail}}</p>
       </ion-label>
 
     </ion-item>
   </ion-list>
+
+ <!--
+  <ion-row class="full_row" *ngFor="let item of items" (click)="viewRecord(item)">
+    <ion-col size="5">
+    <ion-avatar>
+        <img src="{{item.images[0]}}">
+    </ion-avatar>
+    </ion-col>
+    <ion-col size="7">
+    <h2>{{item.address}}</h2>
+    <p style="color:grey">{{item.detail}}</p>
+    </ion-col>
+  </ion-row>
+-->
 
 
 </ion-content>

@@ -1,0 +1,101 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{title}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="title === '我的关注'" color="light" class="no-padding">
+  <div *ngIf="items.length==0">
+    <img src="/assets/blank.png"/>
+  </div>
+  <ion-list *ngIf="items.length!=0">
+    <ion-item *ngFor="let item of items" (click)="viewRecord(item)" lines="inset">
+      <ion-avatar slot="start">
+        <img src="{{item.images[0]}}">
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight:bold;">{{item.name}}</h3>
+        <p style="color:grey;font-size:12px;">{{item.address}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
+</ion-content>
+
+
+<ion-content *ngIf="title === '我的领养'" color="light" class="no-padding">
+  <div *ngIf="items.length==0">
+    <img src="/assets/blank.png"/>
+  </div>
+  <ion-list *ngIf="items.length!=0">
+    <ion-item *ngFor="let item of items" (click)="viewRecord(item)" lines="inset">
+      <ion-avatar slot="start">
+        <img src="{{item.images[0]}}">
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight:bold;">{{item.name}}</h3>
+        <p style="color:grey;font-size:12px;">{{item.address}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
+</ion-content>
+
+<ion-content *ngIf="title === '我的发布'" color="light" class="no-padding">
+  <div *ngIf="items.lost.length==0 && items.pet.length==0">
+    <img src="/assets/blank.png"/>
+  </div>
+  <ion-list *ngIf="items.lost.length!=0">
+    <ion-list-header>
+        发布走失信息
+    </ion-list-header>
+    <ion-item *ngFor="let item of items.lost" (click)="viewRecord(item)" lines="inset">
+      <ion-avatar slot="start">
+        <img src="{{item.images[0]}}">
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight:bold;">{{item.title}}</h3>
+        <p style="color:grey;font-size:12px;">{{item.detail}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
+
+  <ion-list *ngIf="items.pet.length!=0">
+    <ion-list-header>
+        发布流浪宠物信息
+    </ion-list-header>
+    <ion-item *ngFor="let item of items.pet" (click)="viewRecord(item)" lines="inset">
+      <ion-avatar slot="start">
+        <img src="{{item.images[0]}}">
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight:bold;">{{item.name}}</h3>
+        <p style="color:grey;font-size:12px;">{{item.address}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list> 
+
+</ion-content>
+
+<ion-content *ngIf="title === '我的消息'" color="light" class="no-padding">
+  <div *ngIf="items.length==0">
+    <img src="/assets/blank.png"/>
+  </div>
+  <ion-list *ngIf="items.length!=0">
+    <ion-item *ngFor="let item of items" (click)="viewRecord(item)" lines="inset">
+      <ion-avatar slot="start">
+        <img src="{{item?.from.avatar}}" />
+      </ion-avatar>
+      <ion-label>
+        <h3 style="font-weight:bold;">{{item?.from.nickname}}</h3>
+        <p *ngIf="item.lostid" style="color:black;font-size:12px;">Re:{{item?.lostid.title}}</p>
+        <p *ngIf="item.petid" style="color:black;font-size:12px;">Re:{{item?.petid.name}}</p>
+        <p style="color:grey;font-size:12px;">{{item?.message}}</p>
+      </ion-label>
+      <ion-note item-end>{{item.date | date:'yyyy/MM/dd'| lowercase}}</ion-note>
+    </ion-item>
+  </ion-list> 
+</ion-content>

@@ -24,3 +24,13 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+.myCss{
+    --background: gray;
+    --border-radius:0;
+    --width: 200px;
+    --height: 100px;
+    --border-width:0;
+    --color:#fff;
+}

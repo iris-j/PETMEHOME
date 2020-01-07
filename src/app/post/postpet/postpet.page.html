@@ -1,0 +1,77 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-back-button>
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>编辑信息</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button type="submit" (click)="form.valid && postinfo(form)" [disabled]="!form.valid">
+        <ion-icon slot="icon-only" name="send"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form  #form="ngForm">
+    <ion-grid>
+      <ion-row color="primary" class="ion-justify-content-center">
+        <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+          <div class="ion-text-center">
+            <h3>输入宠物信息</h3>
+          </div>
+          <div class="ion-padding">
+            <ion-item>
+              <ion-label>名字</ion-label>
+              <ion-input  class="ion-text-right" name="name" type="text"  ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>性别</ion-label>
+              <ion-select interface="popover" placeholder="选择性别" name="sex" ngModel required>
+                <ion-select-option value="1">雄性</ion-select-option>
+                <ion-select-option value="0">雌性</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>年龄</ion-label>
+              <ion-input class="ion-text-right" name="age" type="text" ngModel required></ion-input>              
+            </ion-item>
+            <ion-item>
+              <ion-label>品种</ion-label>
+              <ion-input class="ion-text-right" name="type" type="text"  ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>体型</ion-label>
+              <ion-input class="ion-text-right" name="size" type="text"  ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>现居地</ion-label>
+              <ion-input class="ion-text-right" name="address" type="text" ngModel required></ion-input>
+            </ion-item>
+          </div>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-fab-button (click)="presentActionSheet()">
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-row> 
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="3" *ngFor="let photo of postService.images">
+        <img [src]="photo" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+
+

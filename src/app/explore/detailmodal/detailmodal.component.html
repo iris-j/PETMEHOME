@@ -1,0 +1,82 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>详情</ion-title>
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="follow()">
+        <ion-icon slot="icon-only" name="heart" color="danger" *ngIf="follow_state"></ion-icon>
+        <ion-icon slot="icon-only" name="heart" color="medium" *ngIf="!follow_state"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let img of item.images">
+      <img src={{img}} style="max-width:100%;"/>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-row>
+        <ion-col size="3">      
+          <span item-left style="font-weight: bold;font-size: 20px;">{{item.name}}</span>
+        </ion-col>
+        <ion-col size="1">
+          <button class="blue_radius_button" *ngIf="item.sex">公</button>
+          <button class="red_radius_button" *ngIf="!item.sex">母</button>
+        </ion-col>
+      </ion-row>
+    </ion-card-header>
+      <ion-row>
+        <ion-col class="label_text" size="3">
+          <span>年龄</span>
+        </ion-col>
+        <ion-col class="value_text" size="9">
+          <span>{{item.age}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="label_text" size="3">
+          <span>品种</span>
+        </ion-col>
+        <ion-col class="value_text" size="9">
+          <span>{{item.type}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="label_text" size="3">
+          <span>体型</span>
+        </ion-col>
+        <ion-col class="value_text" size="9">
+          <span>{{item.size}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="label_text" size="3">
+          <span>现居地</span>
+        </ion-col>
+        <ion-col class="value_text" size="9">
+          <span>{{item.address}}</span>
+        </ion-col>
+      </ion-row>
+</ion-card>
+
+  <p style="text-align:center;">
+    <ion-button style="text-align:center;" (click)="presentAlert()" *ngIf="!adopt_state">我要领养</ion-button>
+    <ion-button style="text-align:center;" disabled="true" *ngIf="adopt_state">已领养</ion-button>
+  </p>
+
+</ion-content>
+
+

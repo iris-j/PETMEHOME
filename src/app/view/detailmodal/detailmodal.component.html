@@ -1,18 +1,90 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar mode="ios">
-    <ion-title>详细信息</ion-title>
-    <ion-buttons slot="end">
-      <button ion-button icon-only (click)="dismiss()">
-        <ion-icon ios="ios-close"> </ion-icon>
-      </button>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
     </ion-buttons>
+    <ion-title>详情</ion-title>
+    <!--
+    <ion-buttons slot="primary">
+      <ion-button (click)="follow()">
+        <ion-icon slot="icon-only" name="heart" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <img src="{{item.images[0]}}">
-  <h2>走失日期：{{item.date}}</h2>
-  <p></p>
+  <ion-slides [options]="slideOpts">
+    <ion-slide *ngFor="let img of item.images">
+      <img src={{img}} style="max-width:100%;"/>
+    </ion-slide>
+  </ion-slides>
+
+  <ion-card>
+
+    <ion-row>
+      <ion-col class="label_text" size="3">
+        <span>走失日期</span>
+      </ion-col>
+      <ion-col class="value_text" size="9">
+        <span>{{item.date | date:'yyyy/MM/dd'| lowercase}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="label_text" size="3">
+        <span>走失地址</span>
+      </ion-col>
+      <ion-col class="value_text" size="9">
+        <span>{{item.address}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="label_text" size="3">
+        <span>详细信息</span>
+      </ion-col>
+      <ion-col class="value_text" size="9">
+        <span>{{item.detail}}</span>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col class="label_text" size="3">
+        <span>联系方式</span>
+      </ion-col>
+      <ion-col class="value_text" size="9">
+        <span>{{item.contact}}</span>
+      </ion-col>
+    </ion-row>
+
+  <!--
+    <ion-item>
+      <ion-icon name="calendar" slot="start"></ion-icon>
+      <ion-label>{{item.date | date:'yyyy/MM/dd'| lowercase}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="globe" slot="start"></ion-icon>
+      <ion-label>{{item.address}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+      <ion-label>{{item.detail}}</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="contact" slot="start"></ion-icon>
+      <ion-label>{{item.contact}}</ion-label>
+    </ion-item>
+  -->  
+</ion-card>
+
+  <p style="text-align:center;"><ion-button (click)="presentAlert()" style="text-align:center;">提供信息</ion-button></p>
 
 
 </ion-content>

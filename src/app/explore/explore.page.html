@@ -1,15 +1,45 @@
-<ion-header>
+<ion-header mode="ios">
   <ion-toolbar mode="ios">
     <ion-title>探索</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-no-padding">
+  <ion-searchbar (ionInput)="filterList($event)" ></ion-searchbar>
   <ion-grid>
     <ion-row>
-      <ion-col col-6 *ngFor="let item of items" class="ion-no-margin ion-no-padding">
-        <ion-card>
+      <ion-col size="6" *ngFor="let item of items" class="ion-no-margin ion-no-padding">
+        <ion-card (click)="viewRecord(item)" mode="ios" style="box-shadow: none !important;margin: 5px !important;
+padding: 0 !important;">
           <img src="{{item.images[0]}}" size="50%"/>
+          <ion-row style="background-color:white">
+            <ion-col size="3">
+              <ion-icon class="small_icon"name="logo-octocat"></ion-icon>
+            </ion-col>
+            <ion-col size="8">
+              <span>{{item.name}}</span>
+            </ion-col>
+          </ion-row>
+          <ion-row style="background-color:white">
+            <ion-col size="3">
+              <ion-icon class="small_icon" name="pin"></ion-icon>
+            </ion-col>
+            <ion-col size="8">
+              <span *ngIf="item.address.length<5">{{item.address}}</span>
+              <span *ngIf="item.address.length>5">{{item.address.substr(0,5)}}...</span>
+            </ion-col>
+          </ion-row>
+          
+          <ion-item>
+            <ion-avatar class="avtar" slot="start">
+              <img src="{{item.reporter.avatar}}">
+            </ion-avatar>
+            <p style="font-size:14px">{{item.reporter.nickname}}</p>
+            
+            <ion-icon slot="end" name="thumbs-up"></ion-icon>
+            
+          </ion-item>
+          <!--
           <ion-card-header>
             <ion-card-subtitle>Aaron</ion-card-subtitle>
             <ion-card-title>Help wanted!</ion-card-title>
@@ -26,6 +56,7 @@
                 <ion-icon name="thumbs-up"></ion-icon>
               </button>
           </ion-item>
+          -->
         </ion-card>
       </ion-col>
     </ion-row>

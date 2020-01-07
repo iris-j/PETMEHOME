@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
+import { DetailmodalComponent } from './detailmodal/detailmodal.component';
 import { ExplorePage } from './explore.page';
 
 const routes: Routes = [
@@ -21,6 +21,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [ExplorePage]
+  entryComponents: [DetailmodalComponent],
+  declarations: [ExplorePage, DetailmodalComponent]
 })
 export class ExplorePageModule {}

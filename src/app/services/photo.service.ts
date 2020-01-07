@@ -7,7 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PhotoService {
-  public image : String
+  public image : String = ''
   constructor(private camera: Camera, private storage:Storage, private http: HttpClient) {}
   takePicture(){
     console.log("take a picture from me");
@@ -19,7 +19,7 @@ export class PhotoService {
     };
     this.camera.getPicture(options).then((imageData) => {
       this.image = "data:image/jpeg;base64," + imageData;
-      this.storage.set('photo', this.image);
+      // this.storage.set('photo', this.image);
       return this.image;
       // return "data:image/jpeg;base64," + imageData;
     }, (err) => {
@@ -39,7 +39,8 @@ export class PhotoService {
     };
     this.camera.getPicture(options).then((imageData) => {
       this.image = "data:image/jpeg;base64," + imageData;
-      this.storage.set('photo', this.image);
+      // this.storage.set('photo', this.image);
+      return this.image;
       // return "data:image/jpeg;base64," + imageData;
     }, (err) => {
       // Handle error

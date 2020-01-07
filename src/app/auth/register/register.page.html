@@ -1,0 +1,51 @@
+<ion-header mode="ios">
+  <ion-toolbar mode="ios">
+    <ion-title>注册</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form  [formGroup]="credentialsForm" (ngSubmit)="register()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div padding>
+            <ion-item>
+              <ion-input formControlName="email" type="email" placeholder="邮箱地址"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="password" type="password" placeholder="密码"></ion-input>
+              <p *ngIf="credentialsForm.get('password').hasError('minlength')">长度至少4位</p>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="confirmPassword" type="password" placeholder="确认密码"></ion-input>
+                <p *ngIf="credentialsForm.controls['confirmPassword'].errors?.passwordNotMatch">
+                密码不匹配
+                </p>
+            </ion-item>
+            <ion-item>
+              <ion-input formControlName="nickname" type="text" placeholder="昵称"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-select formControlName="role" interface="popover" placeholder="选择身份" style="padding-left: 0!important;">
+                <ion-select-option value="user">普通用户</ion-select-option>
+                <ion-select-option value="admin">救助站</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </div>
+          <div padding>
+            <ion-button  size="large" type="submit" [disabled]="!credentialsForm.valid" expand="block">注册</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <ion-grid>
+    <ion-row color="primary" class="ion-justify-content-center">
+      <ion-fab-button (click)="presentActionSheet()">
+        <ion-icon name="contact"></ion-icon>
+      </ion-fab-button>
+    </ion-row> 
+  </ion-grid>
+  <img [src]="photoService.image" *ngIf="photoService.image"/>
+</ion-content>
