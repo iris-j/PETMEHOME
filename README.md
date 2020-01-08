@@ -10,6 +10,33 @@
 本项目前后端分离，前端采用ionic框架开发用户界面，通过rest api调用与后端express server进行交互，后端服务器通过mongoose.js操作mongodb。
 系统设计框图如下：
 ![enter image description here](https://lh3.googleusercontent.com/wQ_G7ZYC-35Rwd465OVHJNaoBSXX0giSiJk8N2byzDv3bYUOMwwKX__wiCsEcwnegh0bIFZXl3E=s1500 "系统框图")
+### 目录结构
+```
+src
+├── app
+│   ├── auth 注册登录系统
+│   │   ├── login 
+│   │   └── register
+│   ├── explore 流浪宠物信息
+│   │   └── detailmodal 宠物详情
+│   ├── personal 个人中心
+│   │   ├── detailmodal 查看个人发布、关注、领养、消息
+│   │   ├── password 修改密码
+│   │   ├── profile 修改个人资料
+│   │   └── settings 设置
+│   ├── post
+│   │   ├── postlost 发布走失信息
+│   │   └── postpet 发布宠物信息
+│   ├── services 
+│   ├── tabs
+│   └── view 走失信息
+│       └── detailmodal 走失详情
+├── assets
+│   └── icon
+├── environments 服务器url配置
+└── theme
+
+```
 
 ### 技术难点
 - ionic环境配置：版本兼容问题。
