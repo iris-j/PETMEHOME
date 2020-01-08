@@ -65,3 +65,5 @@ git clone https://github.com/iris-j/PETMEHOME.git
 3. 修改src/environments/environment.ts中的url和server_url为服务器ip(浏览器调试可用localhost，否则为公网ip或者手机局域网ip，详情见技术难点)
 4. ionic serve 浏览器调试运行
 5. ionic cordova emulate android -l -c 模拟器调试运行，热替换；打开chrome://inspect/#devices 可以查看当前运行的模拟器的后台输出
+
+demo视频：https://www.bilibili.com/video/av82497839/
